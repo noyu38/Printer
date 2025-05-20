@@ -216,6 +216,11 @@ public final class Printer {
      * 出力：Hello 123 45.6 X
      */
     public static void printEach(boolean changeLine, Object... elements) {
+        // elementsがない場合にはエラー
+        if (elements.length == 0) {
+            throw new IllegalArgumentException("1つ以上の引数を指定して下さい。");
+        }
+
         if (changeLine) {
             for (Object element : elements) {
                 System.out.println(element);
@@ -237,30 +242,35 @@ public final class Printer {
      */
     public static void printJoined(int[] arr, String delimiter) {
         String result = Arrays.stream(arr)
-            .mapToObj(String::valueOf)
-            .collect(Collectors.joining(delimiter));
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(delimiter));
         System.out.println(result);
     }
+
     public static void printJoined(double[] arr, String delimiter) {
         String result = Arrays.stream(arr)
-            .mapToObj(String::valueOf)
-            .collect(Collectors.joining(delimiter));
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(delimiter));
         System.out.println(result);
     }
+
     public static void printJoined(long[] arr, String delimiter) {
         String result = Arrays.stream(arr)
-            .mapToObj(String::valueOf)
-            .collect(Collectors.joining(delimiter));
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(delimiter));
         System.out.println(result);
     }
+
     public static void printJoined(char[] arr, String delimiter) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
-            if (i > 0) sb.append(delimiter);
+            if (i > 0)
+                sb.append(delimiter);
             sb.append(arr[i]);
         }
         System.out.println(sb.toString());
     }
+
     public static <T> void printJoined(T[] arr, String delimiter) {
         System.out.println(String.join(delimiter, Arrays.stream(arr)
                 .map(String::valueOf)
