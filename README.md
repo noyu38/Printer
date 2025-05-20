@@ -18,6 +18,7 @@ Printer.println(arr); // 結果：[1, 2, 3, 4, 5]
 ---  
 System.err.println()と同じです。
 ### Printer.printMap(Map<T, T> map)
+---  
 Mapにおけるkeyとvalueを : (コロン)でつないだ形式で表示します。実行例では,(コンマ)で区切られていますが、実際には各セットを出力するごとに改行されます。
 ```
 Map<String, String> map = Map.of("name", "Alice", "city", "Tokyo");
